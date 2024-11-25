@@ -46,15 +46,16 @@ function TextExpander({
   const [isExpanded, setIsExpanded] = useState(expanded);
 
   const handleClick = (expd) => {
-    console.log(expd);
     setIsExpanded((expd) => !expd);
   };
 
   return (
     <div className={className}>
-      {!isExpanded &&
-        `${children.split(" ").slice(0, collapsedNumWords).join(" ")}...`}
-      {isExpanded && children}
+      <span>
+        {!isExpanded
+          ? `${children.split(" ").slice(0, collapsedNumWords).join(" ")}...`
+          : children}
+      </span>
       <button
         style={{ color: buttonColor }}
         onClick={() => handleClick(isExpanded)}
